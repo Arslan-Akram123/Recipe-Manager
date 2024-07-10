@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box1">
+        <h1>Recipe Manager</h1>
+    </div>
+    <div class="box2">
+        <form action="">
+            <input type="text" name="recipe" placeholder="Recipe Name" id="recipe">
+            <textarea name="ingrediants" id="ingrediants" placeholder="ingrediants (separated by commas)"></textarea>
+            <textarea name="instruction" id="instruction" placeholder="instructions"></textarea>
+            <button id="btnsubmit">Add Recipe</button>
+        </form>
+    </div>
+    <div class="box3">
+        <div class="addsection">
+            
+            <h3 id="recipedata"></h3>
+            <br>
+            <p id="ingrediantsdata"></p>
+            <br>
+            <p id="instructiondata"></p>
+               <br>
+            <button id="Edit">Edit</button>
+            <button id="Delete">Delete</button>
+        </div>
+      
+    </div>
+    <div class="box4">
+        <p>@2024 Muhammad Arslan</p>
+    </div>
+
+
+    <script>
+        let recipename=document.getElementById("recipe");
+let ingredients=document.getElementById("ingrediants");
+let instruction=document.getElementById("instruction");
+
+let btnsubmit=document.querySelector("#btnsubmit");
+let addsection=document.querySelector(".addsection")
+
+
+let recipedata=document.getElementById("recipedata")
+let ingrediantsdata=document.getElementById("ingrediantsdata")
+let instructiondata=document.getElementById("instructiondata")
+
+let edit=document.getElementById("Edit");
+
+
+let del=document.getElementById("Delete");
+
+
+function reset(){
+    recipename.value = '';
+    ingredients.value = '';
+    instruction.value = '';
+}
+
+
+btnsubmit.addEventListener("click", function(e) {
+    e.preventDefault();
+  addsection.style.display="block";
+let getname=recipename.value;
+let getingredients=ingredients.value;
+let getinstruction=instruction.value;
+
+recipedata.innerHTML=`${getname}`;
+ingrediantsdata.innerHTML=`${getingredients}`;
+instructiondata.innerHTML=`${getinstruction}`;
+reset();
+})
+
+
+
+
+
+edit.addEventListener("click",function(){   
+recipename.value=`${recipedata.innerHTML}`;
+ingredients.value=`${ingrediantsdata.innerHTML}`;
+instruction.value=`${instructiondata.innerHTML}`;
+addsection.style.display="none";
+
+})
+
+
+
+del.addEventListener("click",function(){
+recipedata.innerHTML="";
+ingrediantsdata.innerHTML="";
+instructiondata.innerHTML=""; 
+reset();
+})
+
+
+
+
+
+
+    </script>
+</body>
+</html>
